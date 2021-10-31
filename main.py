@@ -1,32 +1,26 @@
 #!/usr/bin/env python3
 import discord
+from discord.ext import commands
+import asyncio
 from pycoingecko import CoinGeckoAPI
 import matplotlib.pyplot as plt
 import functions
 
+# Set initial values
 token = functions.load_token('token.key')
-client = discord.Client()
+prefix = "$"
+bot = commands.Bot(command_prefix=prefix)
+cg = CoinGeckoAPI()
 
-@client.event
-async def on_ready():
-    print('We have logged in as {0.user}'.format(client))
+# Display the name of the specified coin 
+@bot.command()
+async def price(ctx, arg):
+    request = cg.get_coins_list()
+    search = str(arg)
+    print(arg)
+    for data in request:
+        if (data["id"] == search):
+            await ctx.send(data)
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-
-    if message.content.startswith('$price'):
-        cg = CoinGeckoAPI()
-        query = cg.get_price(ids='ethereum', vs_currencies='usd', include_24hr_vol=True, include_24hr_change=True)
-        await message.channel.send(query)
-    elif message.content.startswith('$list'):
-        cg = CoinGeckoAPI()
-        query = cg.get_coins_list()
-        await message.channel.send(query)
-    elif message.content.startswith('$ping'):
-        cg = CoinGeckoAPI()
-        query = cg.ping()
-        await message.channel.send(query)
-
-client.run(token)
+# Initialize the bot by giving it the token
+bot.run(token)
