@@ -2,7 +2,7 @@
 ![GitHub](https://img.shields.io/github/license/sanmacorz/crypto-stats-bot)
 ![GitHub](https://img.shields.io/github/commit-activity/m/sanmacorz/crypto-stats-bot)
 
-![Logo](https://user-images.githubusercontent.com/27830167/149175331-07d3be19-bcdf-47d3-92d9-80e7c493cf6e.png)
+![Logo](https://user-images.githubusercontent.com/27830167/149591503-8a63e7e5-0287-46d4-b500-4c73d4807cf4.png)
 
 Crypto Stats is a [Discord](https://discord.com) bot for getting cryptocurrencies market data and statistics. It's made with the [CoinGecko free API](https://www.coingecko.com/en/api), more specifically using the wrapper from the project [pycoingecko](https://github.com/man-c/pycoingecko) written in Python, also for the Discord bot integration it's using the [discord.py](https://github.com/Rapptz/discord.py) project.
 
